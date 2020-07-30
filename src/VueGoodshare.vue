@@ -28,6 +28,7 @@
       <vue-goodshare-viber has_icon title_social="Viber" />
       <vue-goodshare-whats-app has_icon title_social="WhatsApp" />
       <vue-goodshare-line has_icon title_social="LINE" />
+      <vue-goodshare-wechat has_icon title_social="WeChat"></vue-goodshare-wechat>
     </div>
   </div>
 </template>
@@ -50,6 +51,7 @@ import VueGoodshareTelegram from "./providers/Telegram.vue";
 import VueGoodshareViber from "./providers/Viber.vue";
 import VueGoodshareWhatsApp from "./providers/WhatsApp.vue";
 import VueGoodshareLine from "./providers/Line.vue";
+import VueGoodshareWeChat from "./providers/WeChat.vue";
 
 // Import VueGoodshare misc components
 import VueGoodshareEmail from "./providers/Email.vue";
@@ -78,6 +80,7 @@ export default {
     VueGoodshareViber,
     VueGoodshareWhatsApp,
     VueGoodshareLine,
+    VueGoodshareWeChat,
     VueGoodshareEmail,
     VueGoodshareSms,
   },

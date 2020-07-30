@@ -3,16 +3,17 @@
     class="button-social"
     :class="buttonSocialDesignObject"
     :page-url="page_url"
+    :page-title="page_title"
     :button-design="button_design"
     :title-social="title_social"
     :has-icon="has_icon"
     :has-square-edges="has_square_edges"
     @click.prevent="showShareWindow"
   >
-    <i class="icon-line" v-if="this.$props.has_icon"></i>
-    <span class="title-social" v-if="this.$props.title_social">
-      {{ title_social }}
-    </span>
+    <i class="icon-wechat" v-if="this.$props.has_icon"></i>
+    <span class="title-social" v-if="this.$props.title_social">{{
+      title_social
+    }}</span>
   </a>
 </template>
 
@@ -22,7 +23,7 @@ import { documentHref } from "../helpers/href";
 import { openPopUpWindow } from "../helpers/popup_window";
 
 export default {
-  name: "VueGoodshareLine",
+  name: "VueGoodshareWeChat",
   props: {
     page_url: {
       type: String,
@@ -40,9 +41,9 @@ export default {
     return {
       buttonSocialDesignObject: {
         "button-social__square_edges": this.$props.has_square_edges,
-        line__design__flat: this.$props.button_design === "flat",
-        line__design__gradient: this.$props.button_design === "gradient",
-        line__design__outline: this.$props.button_design === "outline"
+        wechat__design__flat: this.$props.button_design === "flat",
+        wechat__design__gradient: this.$props.button_design === "gradient",
+        wechat__design__outline: this.$props.button_design === "outline"
       }
     };
   },
@@ -56,12 +57,12 @@ export default {
       // Variables
       const width = 640;
       const height = 480;
-      const share_url = `line://msg/text/${encodeURIComponent(
+      const share_url = `https://chart.apis.google.com/chart?cht=qr&chs=196x196&chld=Q%7C0&chl=${encodeURIComponent(
         this.$props.page_url
       )}`;
 
       // onClick event
-      clickEvent(this, "line");
+      clickEvent(this, "wechat");
 
       return openPopUpWindow(share_url, width, height);
     }
@@ -102,13 +103,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-line:before {
-  content: "\e813";
+.icon-wechat:before {
+  content: "\f1d7";
 }
 
 // Colors
-$line_main_color: rgb(0, 195, 0);
-$gradient_color: rgb(30, 225, 30);
+$wechat_main_color: rgb(9, 193, 96);
+$gradient_color: rgb(2, 227, 110);
 $background_white_color: rgb(254, 254, 254);
 $text_white_color: rgb(254, 254, 254);
 
@@ -140,47 +141,47 @@ $text_white_color: rgb(254, 254, 254);
   -webkit-border-radius: 0;
 }
 
-// Button line style `flat`
-.line__design__flat {
-  background-color: $line_main_color;
+// Button twitter style `flat`
+.twitter__design__flat {
+  background-color: $wechat_main_color;
   color: $text_white_color;
 }
 
-// Button line style `gradient`
-.line__design__gradient {
+// Button twitter style `gradient`
+.twitter__design__gradient {
   background-image: linear-gradient(
-    to bottom,
-    $line_main_color,
+    to top,
+    $wechat_main_color,
     $gradient_color
   );
   background-image: -moz-linear-gradient(
-    to bottom,
-    $line_main_color,
+    to top,
+    $wechat_main_color,
     $gradient_color
   );
   background-image: -o-linear-gradient(
-    to bottom,
-    $line_main_color,
+    to top,
+    $wechat_main_color,
     $gradient_color
   );
   background-image: -webkit-linear-gradient(
-    to bottom,
-    $line_main_color,
+    to top,
+    $wechat_main_color,
     $gradient_color
   );
   background-image: -ms-linear-gradient(
-    to bottom,
-    $line_main_color,
+    to top,
+    $wechat_main_color,
     $gradient_color
   );
   color: $text_white_color;
 }
 
-// Button line style `outline`
-.line__design__outline {
+// Button twitter style `outline`
+.twitter__design__outline {
   background-color: $background_white_color;
-  border: 1px solid $line_main_color;
-  color: $line_main_color;
+  border: 1px solid $wechat_main_color;
+  color: $wechat_main_color;
 }
 
 // Title
